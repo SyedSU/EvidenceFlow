@@ -89,7 +89,7 @@ def main():
   extracted=temp/'extracted'
   with zipfile.ZipFile(target) as z:z.extractall(extracted)
   exe=extracted/product/(product+'.exe')
-  smoke=run([exe,'--headless','--script','res://package_smoke.gd'],env,'PACKAGED_NATIVE_SAVE_AND_UI_PASS',extracted/product,timeout=40)
+  smoke=run([exe,'--headless','--','--package-smoke'],env,'PACKAGED_NATIVE_SAVE_AND_UI_PASS',extracted/product,timeout=40)
   verify_smoke_file(temp/'profile')
   run([exe,'--headless','--quit-after','5'],env,'Godot Engine',extracted/product)
   (out/'windows-smoke.log').write_text(smoke,encoding='utf-8')

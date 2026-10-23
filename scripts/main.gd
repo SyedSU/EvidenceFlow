@@ -33,6 +33,7 @@ func field(hint: String,parent: Node) -> LineEdit:
 func row(parent: Node) -> HFlowContainer:
  var item=HFlowContainer.new();parent.add_child(item);return item
 func _ready():
+ if "--package-smoke" in OS.get_cmdline_user_args():call_deferred("_package_review_smoke")
  add_child(runner);runner.changed.connect(update_status)
  var margin=MarginContainer.new();margin.name="Layout";add_child(margin);margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
  for side in ["left","top","right","bottom"]:margin.add_theme_constant_override("margin_"+side,12)
@@ -206,3 +207,7 @@ func choose(action: String):
     tell(error if not error.is_empty() else "Workspace copy saved: "+path)
  )
  chooser.popup_centered_ratio(0.85)
+
+func _package_review_smoke():
+ var smoke=preload("res://package_smoke.gd").new()
+ await smoke.run(get_tree())
