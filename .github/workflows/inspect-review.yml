@@ -7,6 +7,7 @@ on:
 permissions:
   # GitHub requires write access to read draft releases. Inspector uses GET/download only.
   contents: write
+  actions: read
 jobs:
   inspect:
     if: github.ref == 'refs/heads/main'
