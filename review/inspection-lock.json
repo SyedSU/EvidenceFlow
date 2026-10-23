@@ -1,0 +1,32 @@
+{
+  "repository": "SyedSU/EvidenceFlow",
+  "product": "EvidenceFlow",
+  "sourceCommit": "01f40e9567b8ff10d9b42fcc2197c0b2dace94d5",
+  "runId": 39922783087,
+  "release": {
+    "id": 421592834,
+    "tag": "review-evidenceflow-01f40e9567b8ff10d9b42fcc2197c0b2dace94d5-39922783087-1"
+  },
+  "assets": [
+    {
+      "name": "EvidenceFlow-Windows-x64-review.zip",
+      "size": 38005654,
+      "sha256": "sha256:2b284a2260cd69eda2ec4f6a13cd2016cdcd8aaf13ebf62c65b13a17de2dc176"
+    },
+    {
+      "name": "package-report.json",
+      "size": 1488,
+      "sha256": "sha256:055b4beffba99d22699e380eaeb34b67309e2064e6fafba1c041333391faaa2c"
+    },
+    {
+      "name": "review-build.json",
+      "size": 1008,
+      "sha256": "sha256:80e0cc8504eb32a6272f05bb0b79ef5724b4ef15b229c0b698158dbd13d8056f"
+    },
+    {
+      "name": "windows-smoke.log",
+      "size": 109,
+      "sha256": "sha256:46c7cc5e3b97a423a83d3d7f67287db86cdad4c41ff2ec27bf5a22047c484834"
+    }
+  ]
+}

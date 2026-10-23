@@ -1,0 +1,28 @@
+name: Inspect pinned Windows review download
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['review/**', '.github/workflows/inspect-review.yml']
+permissions:
+  # GitHub requires write access to read draft releases. Inspector uses GET/download only.
+  contents: write
+jobs:
+  inspect:
+    if: github.ref == 'refs/heads/main'
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify independent archive and receipt guards
+        run: python -m unittest discover -s review -p test_inspection.py
+      - name: Download exact pinned draft and inspect isolated native persistence
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python review/inspect_windows.py
