@@ -1,0 +1,9 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: synthetic loopback server starts
+PASS: OpenAI-compatible protocol decoded (synthetic)
+PASS: UTF8 document sent as user data
+PASS: bounded nonstreaming instruction/data contract
+PASS: malformed HTTP response refused
+PASS: nontext response refused
+PASS: redirect refused without following remote Location

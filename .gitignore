@@ -1,0 +1,6 @@
+.godot/
+__pycache__/
+build/
+native/*.so
+native/*.dll
+native/*.dylib

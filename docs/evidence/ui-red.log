@@ -1,0 +1,15 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Cannot open file 'res://main.tscn'.
+   at: load (scene/resources/resource_format_text.cpp:1442)
+   GDScript backtrace (most recent call first):
+       [0] run (res://tests/test_ui.gd:8)
+ERROR: Failed loading resource: res://main.tscn.
+   at: _load (core/io/resource_loader.cpp:317)
+   GDScript backtrace (most recent call first):
+       [0] run (res://tests/test_ui.gd:8)
+ERROR: FAIL: native main scene exists
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/test_ui.gd:5)
+       [1] run (res://tests/test_ui.gd:9)

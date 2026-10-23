@@ -1,0 +1,17 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: native main scene exists
+PASS: visual DAG connections displayed
+PASS: native step nodes displayed
+PASS: UI imports real bounded document
+PASS: UI executes complete workflow
+PASS: UI save and reopen retain completed workflow
+PASS: UI workflow report exports real inspected document
+PASS: failed UI import preserves document and inspected outputs
+PASS: UI shows inspectable report
+PASS: editing option invalidates previous outputs
+PASS: UI explicitly selects real local inference
+PASS: visual disconnect changes model
+PASS: visual reconnect restores valid workflow
+PASS: root and graph adapt to narrow viewport
+PASS: run reachable by keyboard

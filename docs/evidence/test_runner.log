@@ -1,0 +1,12 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: runner implementation exists
+PASS: template DAG completes
+PASS: connected intermediate results retained
+PASS: translation fallback honest
+PASS: unavailable local model fails visibly
+PASS: model failure never produces template AI result
+PASS: cancellation persists explicit state
+PASS: running checkpoint durable
+PASS: interrupted run never auto resumes
+PASS: cancelled run reopens without auto retry

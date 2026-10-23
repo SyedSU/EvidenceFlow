@@ -1,0 +1,39 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: workflow implementation exists
+PASS: default read/extract/translate/report DAG valid
+PASS: unsafe visual node identity refused: bad/name
+PASS: unsafe visual node identity refused: bad.name
+PASS: unsafe visual node identity refused: bad:name
+PASS: unsafe visual node identity refused: GraphEdit
+PASS: unsafe visual node identity refused: _connection_layer
+PASS: cycle refused
+PASS: untrusted action kind refused
+PASS: dangling connection refused
+PASS: ambiguous multiple inputs refused
+PASS: unsupported document refused
+PASS: malformed UTF8 refused
+PASS: oversized input refused
+PASS: Unicode markdown retained
+PASS: remote endpoint refused https://example.com/v1/chat/completions
+PASS: remote endpoint refused http://localhost.evil:8080/v1/chat/completions
+PASS: remote endpoint refused http://127.0.0.1:8080@evil/v1/chat/completions
+PASS: remote endpoint refused http://192.168.1.3:8080/v1/chat/completions
+PASS: literal loopback endpoint allowed
+PASS: DNS endpoint refused
+PASS: template extracts matching lines
+PASS: template translation explicitly non-AI
+PASS: report contains inspected input
+PASS: new workspace starts safely
+PASS: native durable first save
+PASS: saved state reopens
+PASS: second save creates previous generation
+PASS: stale writer refused
+PASS: reload recovers latest state
+PASS: explicit report export
+PASS: export records mode and report
+PASS: export refuses existing files
+PASS: corruption reported
+PASS: corrupt original preserved
+PASS: corrupt workspace never overwritten
+PASS: previous generation opens separately

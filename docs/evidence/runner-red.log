@@ -1,0 +1,15 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Attempt to open script 'res://scripts/runner.gd' resulted in error 'File not found'.
+   at: load_source_code (modules/gdscript/gdscript.cpp:1139)
+   GDScript backtrace (most recent call first):
+       [0] run (res://tests/test_runner.gd:10)
+ERROR: Failed loading resource: res://scripts/runner.gd.
+   at: _load (core/io/resource_loader.cpp:317)
+   GDScript backtrace (most recent call first):
+       [0] run (res://tests/test_runner.gd:10)
+ERROR: FAIL: runner implementation exists
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/test_runner.gd:5)
+       [1] run (res://tests/test_runner.gd:11)
