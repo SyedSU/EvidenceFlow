@@ -33,8 +33,12 @@ def download(name,folder):
  with target.open('rb') as f:
   if hashlib.file_digest(f,'sha512').hexdigest()!=PINS[name]:raise ValueError('Pinned Godot checksum mismatch')
  return target
-def run(command,env=None,marker=None,cwd=None):
- r=subprocess.run([str(x) for x in command],cwd=cwd or ROOT,env=env,text=True,encoding='utf-8',stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=180)
+def run(command,env=None,marker=None,cwd=None,timeout=180):
+ try:r=subprocess.run([str(x) for x in command],cwd=cwd or ROOT,env=env,text=True,encoding='utf-8',stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=timeout)
+ except subprocess.TimeoutExpired as error:
+  output=error.stdout or b''
+  print(output.decode('utf-8',errors='replace') if isinstance(output,bytes) else output,flush=True)
+  raise RuntimeError('Native process timed out; captured diagnostics above') from None
  print(r.stdout)
  if r.returncode or 'SCRIPT ERROR' in r.stdout or 'ERROR:' in r.stdout or (marker and marker not in r.stdout):raise RuntimeError('Native export/smoke failed')
  return r.stdout
@@ -85,7 +89,7 @@ def main():
   extracted=temp/'extracted'
   with zipfile.ZipFile(target) as z:z.extractall(extracted)
   exe=extracted/product/(product+'.exe')
-  smoke=run([exe,'--headless','--script','res://package_smoke.gd'],env,'PACKAGED_NATIVE_SAVE_AND_UI_PASS',extracted/product)
+  smoke=run([exe,'--headless','--script','res://package_smoke.gd'],env,'PACKAGED_NATIVE_SAVE_AND_UI_PASS',extracted/product,timeout=40)
   verify_smoke_file(temp/'profile')
   run([exe,'--headless','--quit-after','5'],env,'Godot Engine',extracted/product)
   (out/'windows-smoke.log').write_text(smoke,encoding='utf-8')
