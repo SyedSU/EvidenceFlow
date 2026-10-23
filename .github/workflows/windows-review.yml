@@ -1,0 +1,33 @@
+name: Windows portable review build
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['native/**', 'scripts/**', 'project.godot', '*.gd', '*.tscn', 'LICENSE', '.github/workflows/windows-review.yml']
+permissions:
+  contents: read
+concurrency:
+  group: windows-review-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  review-build:
+    if: github.ref == 'refs/heads/main'
+    runs-on: windows-latest
+    timeout-minutes: 25
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify packaging guard regressions
+        run: python -m unittest discover -s scripts -p 'test_*review*.py'
+      - name: Build and smoke exact Windows review package
+        run: python scripts/windows_review.py
+      - name: Retain private draft and verify server hashes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/store_review_build.py

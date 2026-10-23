@@ -6,3 +6,5 @@ native/*.dll
 native/*.dylib
 
 *.import
+
+/build/

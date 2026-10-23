@@ -1,0 +1,9 @@
+# Windows review packaging — 2026-10-23
+
+Scope: unsigned portable Windows x64 development package, without bundled inference/model. Not a production release or Android acceptance.
+
+First-party packaging reuses Genesis native save builder, version resource writer and private draft storage helper. Windows/template official SHA512 pins are recorded in windows_review.py against Godot4.7.2 source ed1daf0bf001b61586d9930840f2f1394092c079. Official source COPYRIGHT.txt is included; original proprietary LICENSE is retained. No new runtime framework or third-party asset is adopted. Existing checkout/setup-python Actions tags remain an open production review/pin prerequisite.
+
+Fresh source review identified release assertions eliminating the write test. The smoke now explicitly evaluates native availability, write and read, and fails with a nonzero exit; the host independently checks actual JSON output. Its missing/invalid/success regression was observed failing before implementation and now passes. Package inventory/source/overwrite refusals and private storage/server hash guards have local tests. Every build copies tracked source into a temporary tree, compiles there, exports there, then extracts the exact ZIP and runs persistence/main startup from its extracted directory. Local binaries are preserved and ignored/untracked workspace data are not export inputs. Data/key/certificate patterns and test/docs/native source are excluded from export.
+
+Actual Windows CI is required to prove PE version, export and DLL loading; local Linux tests do not prove these. Production signing, physical-target/UI/accessibility acceptance, Android and complete bundled AI remain open. Downloadable private review drafts require source repository write access. Extract the whole ZIP and run the executable; checksums are integrity records, not publisher authentication.
