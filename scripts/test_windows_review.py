@@ -5,7 +5,7 @@ m=importlib.util.module_from_spec(spec)
 class PackageGuards(unittest.TestCase):
  def setUp(self):
   spec.loader.exec_module(m);self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup);self.root=Path(self.temp.name);self.payload=self.root/'payload';self.payload.mkdir()
-  for name in ['EvidenceFlow.exe','native/genesis_save.dll','LICENSE.txt','THIRD-PARTY-NOTICES.txt','REVIEW-BUILD.txt']:
+  for name in ['EvidenceFlow.exe','genesis_save.dll','LICENSE.txt','THIRD-PARTY-NOTICES.txt','REVIEW-BUILD.txt']:
    p=self.payload/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b'fixture package bytes')
  def test_smoke_requires_actual_native_written_json(self):
   profile=self.root/'profile';profile.mkdir()
@@ -22,7 +22,7 @@ class PackageGuards(unittest.TestCase):
    for row in manifest['files']:self.assertEqual(m.digest_bytes(z.read('EvidenceFlow/'+row['path'])),row['sha256'])
   self.assertEqual(result['sha256'],m.digest_bytes(target.read_bytes()))
  def test_missing_native_library_rejected(self):
-  (self.payload/'native/genesis_save.dll').unlink()
+  (self.payload/'genesis_save.dll').unlink()
   with self.assertRaises(ValueError):m.archive_payload(self.payload,self.root/'out.zip','EvidenceFlow','a'*40)
  def test_unexpected_user_data_rejected(self):
   (self.payload/'credentials.json').write_text('not a credential')

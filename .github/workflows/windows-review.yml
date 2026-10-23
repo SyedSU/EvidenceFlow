@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['native/**', 'scripts/**', 'project.godot', '*.gd', '*.tscn', 'LICENSE', '.github/workflows/windows-review.yml']
+    paths: ['.gitattributes', 'native/**', 'scripts/**', 'project.godot', '*.gd', '*.tscn', 'LICENSE', '.github/workflows/windows-review.yml']
 permissions:
   contents: read
 concurrency:

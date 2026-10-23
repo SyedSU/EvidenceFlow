@@ -14,10 +14,10 @@ def archive_payload(payload,target,product,source):
  payload=Path(payload);target=Path(target)
  if product not in PRODUCTS or not re.fullmatch('[a-f0-9]{40}',source):raise ValueError('Exact product/source required')
  if target.exists():raise FileExistsError(target)
- dll='native/genesis_save.dll' if product=='EvidenceFlow' else 'genesis_save.dll'
+ dll='genesis_save.dll'
  allowed={product+'.exe',dll,'LICENSE.txt','THIRD-PARTY-NOTICES.txt','REVIEW-BUILD.txt'}
  files=sorted(p for p in payload.rglob('*') if p.is_file() or p.is_symlink())
- if any(p.is_symlink() for p in files) or {p.relative_to(payload).as_posix() for p in files}!=allowed:raise ValueError('Unexpected or missing payload files')
+ if any(p.is_symlink() for p in files) or {p.relative_to(payload).as_posix() for p in files}!=allowed:raise ValueError('Unexpected or missing payload files: '+repr(sorted(p.relative_to(payload).as_posix() for p in files)))
  rows=[{'path':p.relative_to(payload).as_posix(),'size':p.stat().st_size,'sha256':digest(p)} for p in files]
  manifest={'product':product,'version':'0.1.0-dev','platform':'windows-x64','sourceCommit':source,'publicationAuthorized':False,'bundledInference':False,'files':rows}
  with zipfile.ZipFile(target,'x',compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
